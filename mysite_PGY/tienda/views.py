@@ -47,7 +47,6 @@ def agregar_al_carrito(request, id_bebida):
             'nombre': bebida.nombre,
             'precio': bebida.precio,
             'cantidad': 1,
-            'imagen': bebida.imagen.url if bebida.imagen else None
         })
     
     request.session['carrito'] = carrito

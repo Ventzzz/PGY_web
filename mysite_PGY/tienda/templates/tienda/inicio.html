@@ -13,98 +13,98 @@
     <div class="sticky">
         <nav class="navbar navbar-expand-lg navbar-custom">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'inicio' %}"><img src="{% static 'Images/navbar-icon.jpg' %}" id="nav-icon" alt=""></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Menus</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'registro' %}">Registrar usuario</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'carrito' %}">Carrito de compras</a>
-                    </li>
-                </ul>
-                {% if user.is_authenticated %}
-                  <div>Bienvenido, {{ usuario.get_username }}.</div>
-                    <form action="{% url 'inicio' %}" method="post" class="logout-form">
-                      {% csrf_token %}
-                      <button type="submit" class="logout-button">
-                        <img src="{% static 'tienda/Imagenes/logout.png' %}" width="40" alt="Logout">
-                      </button>
-                    </form>
-                {% else %}
-                    <div>
-                      <a href="{% url 'inicio' %}">
-                        <img src="{% static 'tienda/Imagenes/login.png' %}" width="40" alt="Login">
-                      </a>
-                    </div>
-                {% endif %}
-              </div>
+                <a class="navbar-brand" href="{% url 'inicio' %}"><img src="{% static 'Images/navbar-icon.jpg' %}" id="nav-icon" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Menus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registro' %}">Registrar usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'carrito' %}">Carrito de compras</a>
+                        </li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                        <div class="d-flex align-items-center">
+                            <div class="welcome-text">Bienvenido, {{ user.get_username }}.</div>
+                            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                                {% csrf_token %}
+                                <button type="submit" class="logout-button">
+                                    <img src="{% static 'tienda/Imagenes/logout.png' %}" alt="Logout">
+                                </button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <div>
+                            <a href="{% url 'inicio' %}">
+                                <img src="{% static 'tienda/Imagenes/login.png' %}" width="40" alt="Login">
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-          </nav>
-      </div>
+        </nav>
+    </div>
 
-      <div id="carouselExampleCaptions" class="carousel slide">
+    <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{% static 'tienda/Imagenes/comida1.jpeg' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Slide 1</h5>
-              <p>Description for slide 1.</p>
+            <div class="carousel-item active">
+                <img src="{% static 'tienda/Imagenes/comida1.jpeg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Slide 1</h5>
+                    <p>Description for slide 1.</p>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="{% static 'tienda/Imagenes/completo.jpg' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Slide 2</h5>
-              <p>Description for slide 2.</p>
+            <div class="carousel-item">
+                <img src="{% static 'tienda/Imagenes/completo.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Slide 2</h5>
+                    <p>Description for slide 2.</p>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="{% static 'tienda/Imagenes/comida3.webp' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Slide 3</h5>
-              <p>Description for slide 3.</p>
+            <div class="carousel-item">
+                <img src="{% static 'tienda/Imagenes/comida3.webp' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Slide 3</h5>
+                    <p>Description for slide 3.</p>
+                </div>
             </div>
-          </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
-      </div>
+    </div>
 
-      <div class="container container-bebidas">
+    <div class="container container-bebidas">
         {% if bebidas %}
             <div class="row">
                 {% for bebida in bebidas %}
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{% static 'bebida.imagen' %}" class="card-img-top" alt="...">
+                            <img src="{% static 'tienda/Imagenes/coca.jpg' %}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ bebida.nombre }}</h5>
                                 <p class="card-text">{{ bebida.descripcion }}</p>
                                 <p class="card-text">$ {{ bebida.precio }}</p>
-                                {% if not user.is_superuser %}
-                                    <form action="{% url 'agregar_al_carrito' bebida.id %}" method="post">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-                                    </form>
-                                {% endif %}
+                                <form action="{% url 'agregar_al_carrito' bebida.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -113,19 +113,18 @@
         {% else %}
             <p>No hay bebidas para mostrar</p>
         {% endif %}
-      </div>
+    </div>
 
-      <div class="container-custom">
+    <div class="container-custom">
         <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="{% url 'inicio' %}" class="nav-link px-2 text-muted">Inicio</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre Nosotros</a></li>
-          </ul>
-          <p class="text-center text-muted">© 2024 Dream Food, Inc</p>
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="{% url 'inicio' %}" class="nav-link px-2 text-muted">Inicio</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre Nosotros</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2024 Dream Food, Inc</p>
         </footer>
-      </div>
-
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
