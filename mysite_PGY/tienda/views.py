@@ -57,3 +57,6 @@ def agregar_al_carrito(request, id_bebida):
     if 'from_cart' in request.POST:
         return redirect('/tienda/carrito')
     return redirect('/tienda/catalogo')
+
+def inicio_sesion():
+    return redirect('/tienda/inicio')

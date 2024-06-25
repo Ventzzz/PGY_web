@@ -1,0 +1,10 @@
+/* CSS/CSS.css */
+.navbar-custom {
+    background-color: #f5ebdc;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+}
