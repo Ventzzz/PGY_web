@@ -57,3 +57,9 @@ def agregar_al_carrito(request, id_bebida):
     if 'from_cart' in request.POST:
         return redirect('/tienda/carrito')
     return redirect('/tienda/catalogo')
+
+def producto(request, id_bebida):
+    bebida = Bebidas.objects.get(id=id_bebida)
+    contexto = {"bebida" : bebida}
+
+    return render(request, 'tienda/producto.html', contexto)

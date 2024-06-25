@@ -10,6 +10,6 @@ class Bebidas(models.Model):
     nombre = models.CharField(max_length=50)
     precio = models.PositiveIntegerField()
     descripcion = models.CharField(max_length=250)
-    imagen = models.ImageField(upload_to='bebida_Imagen/',)
+    imagen = models.ImageField(upload_to='bebidas/', null=True, blank=True)
     def __str__(self):
         return self.nombre
