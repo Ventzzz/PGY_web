@@ -8,12 +8,10 @@ from .models import Bebidas
 
 # Ex: localhost:8000/tienda/inicio/
 def inicio(request):
-    return render(request,"tienda/inicio.html",{})
-
-def catalogo(request):
     objetos = Bebidas.objects.all()
     contexto = {"bebidas" : objetos}
-    return render(request, "tienda/catalogo.html", contexto)
+    return render(request, "tienda/inicio.html", contexto)
+
 
 def registro(request):
     if request.method == 'POST':
@@ -56,4 +54,4 @@ def agregar_al_carrito(request, id_bebida):
     
     if 'from_cart' in request.POST:
         return redirect('/tienda/carrito')
-    return redirect('/tienda/catalogo')
+    return redirect('/tienda/inicio')
