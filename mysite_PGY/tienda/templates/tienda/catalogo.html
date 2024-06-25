@@ -9,20 +9,20 @@
     {% load static %}
     <h1><a href="{% url 'carrito' %}">Ir al carrito</a></h1>
     {% if bebidas %}
+        <div>
+            <p>Hay bebidas, estas son:</p>
+        </div>
         {% for bebida in bebidas %}
             <div>
-                <p>Hay bebidas, estas son:</p>
-            </div>
-            <img src="{% static 'tienda/coca.jpg' %}" alt="coca">
-            <h1>{{ bebida.nombre }}</h1>
-            <h2>{{ bebida.precio }}</h2>
-            <p>{{ bebida.descripcion }}</p>
-            {% if not user.is_superuser %}
+                <img src="{{ bebida.imagen.url }}" alt="{{ bebida.nombre }}">
+                <h1>{{ bebida.nombre }}</h1>
+                <h2>{{ bebida.precio }}</h2>
+                <p>{{ bebida.descripcion }}</p>
                 <form action="{% url 'agregar_al_carrito' bebida.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="addCart">Agregar al carrito</button>
                 </form>
-            {% endif %}
+            </div>
         {% endfor %}
     {% else %}
         <p>No hay bebidas para mostrar</p>
