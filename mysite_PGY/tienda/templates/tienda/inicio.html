@@ -88,25 +88,32 @@
         </button>
       </div>
 
-      {% if bebidas %}
-        {% for bebida in bebidas %}
-            <div>
-                <p>Hay bebidas, estas son:</p>
+      <div class="container container-bebidas">
+        {% if bebidas %}
+            <div class="row">
+                {% for bebida in bebidas %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{% static 'bebida.imagen' %}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ bebida.nombre }}</h5>
+                                <p class="card-text">{{ bebida.descripcion }}</p>
+                                <p class="card-text">$ {{ bebida.precio }}</p>
+                                {% if not user.is_superuser %}
+                                    <form action="{% url 'agregar_al_carrito' bebida.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <img src="{% static 'tienda/coca.jpg' %}" alt="coca">
-            <h1>{{ bebida.nombre }}</h1>
-            <h2>{{ bebida.precio }}</h2>
-            <p>{{ bebida.descripcion }}</p>
-            {% if not user.is_superuser %}
-                <form action="{% url 'agregar_al_carrito' bebida.id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="addCart">Agregar al carrito</button>
-                </form>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        <p>No hay bebidas para mostrar</p>
-    {% endif %}
+        {% else %}
+            <p>No hay bebidas para mostrar</p>
+        {% endif %}
+      </div>
 
       <div class="container-custom">
         <footer class="py-3 my-4">
