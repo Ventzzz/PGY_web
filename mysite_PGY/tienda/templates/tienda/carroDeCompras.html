@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="table-responsive-xxl">
+            <table class="table table-bordered text-center align-middle custom-table">
+                <thead class="table-light">
+                    <tr>
+                        <th></th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in carrito %}
+                    <tr>
+                        <td>
+                            <div class="cart-product d-flex justify-content-center align-items-center">
+                                {% if item.imagen %}
+                                    <img src="{{ item.imagen }}" alt="{{ item.nombre }}" class="cart-image img-fluid" style="width: 150px; height: 250px;">
+                                {% else %}
+                                    <span>Imagen no disponible</span>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.precio }}</td>
+                        <td>{{ item.cantidad }}</td>
+
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</body>
+</html>
